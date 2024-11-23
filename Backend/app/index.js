@@ -1,10 +1,11 @@
+process.env.TNS_ADMIN = "C:\Users\DELL\Wallet_THNJAU6SNYO3FQGP"; // Remplacez par le chemin exact
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config({ path: './DB_connection.env' });
 
 const usersRoutes = require('./Routes/UserRoutes');
 const analyticsRoutes = require('./Routes/AnalyticsRoutes');
-const deliveryRoutes = require('./Routes/DeliveryRoutes');
+const deliveryRoutes = require('./Routes/deliveryRoutes');
 const orderRoutes = require('./Routes/OrderRoutes');
 const productRoutes = require('./Routes/ProductRoutes');
 const stockRoutes = require('./Routes/StockRoutes');

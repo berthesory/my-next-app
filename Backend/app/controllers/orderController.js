@@ -1,5 +1,5 @@
-const oracledb = require("oracledb");
-require("dotenv").config();
+const oracledb = require('oracledb');
+require('dotenv').config();
 
 // Middleware pour se connecter à la base
 async function connectDB() {
@@ -22,9 +22,14 @@ const addOrder = async (req, res) => {
       { autoCommit: true }
     );
     await connection.close();
-    res.status(201).json({ message: "Commande ajoutée avec succès", result });
+    res.status(201).json({ message: 'Commande ajoutée avec succès', result });
   } catch (err) {
-    res.status(500).json({ error: "Erreur lors de l'ajout de la commande", details: err.message });
+    res
+      .status(500)
+      .json({
+        error: "Erreur lors de l'ajout de la commande",
+        details: err.message,
+      });
   }
 };
 
@@ -36,7 +41,12 @@ const getAllOrders = async (req, res) => {
     await connection.close();
     res.json({ orders: result.rows });
   } catch (err) {
-    res.status(500).json({ error: "Erreur lors de la récupération des commandes", details: err.message });
+    res
+      .status(500)
+      .json({
+        error: 'Erreur lors de la récupération des commandes',
+        details: err.message,
+      });
   }
 };
 

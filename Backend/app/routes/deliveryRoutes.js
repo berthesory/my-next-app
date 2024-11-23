@@ -1,6 +1,6 @@
-const express = require("express");
-const oracledb = require("oracledb");
-require("dotenv").config();
+const express = require('express');
+const oracledb = require('oracledb');
+require('dotenv').config();
 
 const router = express.Router();
 
@@ -16,8 +16,25 @@ async function connectDB() {
   });
 }
 
-// Exemple : Ajouter une livraison
-router.post("/add", async (req, res) => {
+// Route GET : Récupérer toutes les livraisons
+router.get('/', async (req, res) => {
+  try {
+    const connection = await connectDB();
+
+    const result = await connection.execute(`SELECT * FROM DELIVERIES`);
+  
+    await connection.close();
+    res.status(200).json(result.rows); // Retourne les livraisons
+  } catch (err) {
+    res.status(500).json({
+      error: "Erreur lors de la récupération des livraisons",
+      details: err.message,
+    });
+  }
+});
+
+// Route POST : Ajouter une nouvelle livraison
+router.post('/add', async (req, res) => {
   const { orderId, deliveryDate, status } = req.body;
   try {
     const connection = await connectDB();
@@ -29,9 +46,12 @@ router.post("/add", async (req, res) => {
     );
 
     await connection.close();
-    res.status(201).json({ message: "Livraison ajoutée avec succès", result });
+    res.status(201).json({ message: 'Livraison ajoutée avec succès', result });
   } catch (err) {
-    res.status(500).json({ error: "Erreur lors de l'ajout de la livraison", details: err.message });
+    res.status(500).json({
+      error: "Erreur lors de l'ajout de la livraison",
+      details: err.message,
+    });
   }
 });
 

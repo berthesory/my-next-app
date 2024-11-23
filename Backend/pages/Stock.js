@@ -37,7 +37,9 @@ export default async function handler(req, res) {
         [productId, quantity],
         { autoCommit: true }
       );
-      res.status(201).json({ message: 'Stock mis à jour', stock: { productId, quantity } });
+      res
+        .status(201)
+        .json({ message: 'Stock mis à jour', stock: { productId, quantity } });
     } catch (error) {
       res.status(500).json({ message: 'Erreur serveur' });
     } finally {
@@ -52,7 +54,9 @@ export default async function handler(req, res) {
         [quantity, productId],
         { autoCommit: true }
       );
-      res.status(200).json({ message: 'Stock mis à jour', stock: { productId, quantity } });
+      res
+        .status(200)
+        .json({ message: 'Stock mis à jour', stock: { productId, quantity } });
     } catch (error) {
       res.status(500).json({ message: 'Erreur serveur' });
     } finally {

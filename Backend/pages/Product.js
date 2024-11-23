@@ -37,7 +37,9 @@ export default async function handler(req, res) {
         [name, price, stock],
         { autoCommit: true }
       );
-      res.status(201).json({ message: 'Produit ajouté', product: { name, price, stock } });
+      res
+        .status(201)
+        .json({ message: 'Produit ajouté', product: { name, price, stock } });
     } catch (error) {
       res.status(500).json({ message: 'Erreur serveur' });
     } finally {

@@ -6,7 +6,9 @@ body {
   color: #333;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 0;
   font-weight: bold;
 }
@@ -44,12 +46,14 @@ h1, h2, h3 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.admin-cards, .sales-metrics {
+.admin-cards,
+.sales-metrics {
   display: flex;
   gap: 20px;
 }
 
-.card, .metric {
+.card,
+.metric {
   flex: 1;
   padding: 20px;
   background: #ecf0f1;
@@ -57,7 +61,8 @@ h1, h2, h3 {
   text-align: center;
 }
 
-.card:hover, .metric:hover {
+.card:hover,
+.metric:hover {
   background: #bdc3c7;
 }
 

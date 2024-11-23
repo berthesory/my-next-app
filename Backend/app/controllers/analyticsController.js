@@ -1,5 +1,5 @@
-const oracledb = require("oracledb");
-require("dotenv").config();
+const oracledb = require('oracledb');
+require('dotenv').config();
 
 // Middleware pour se connecter à la base
 async function connectDB() {
@@ -18,7 +18,12 @@ const getAnalyticsData = async (req, res) => {
     await connection.close();
     res.json({ analytics: result.rows });
   } catch (err) {
-    res.status(500).json({ error: "Erreur lors de la récupération des données analytiques", details: err.message });
+    res
+      .status(500)
+      .json({
+        error: 'Erreur lors de la récupération des données analytiques',
+        details: err.message,
+      });
   }
 };
 

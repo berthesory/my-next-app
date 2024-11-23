@@ -102,7 +102,8 @@ const Table = styled.table`
   border-collapse: collapse;
   margin-top: 15px;
 
-  th, td {
+  th,
+  td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;

@@ -10,7 +10,9 @@ const Administration = () => {
         <MainContent>
           <Section>
             <h2>Gestion des utilisateurs</h2>
-            <p>Ajoutez, modifiez ou supprimez des utilisateurs de la plateforme.</p>
+            <p>
+              Ajoutez, modifiez ou supprimez des utilisateurs de la plateforme.
+            </p>
             <Button>Voir les utilisateurs</Button>
           </Section>
 
@@ -22,7 +24,9 @@ const Administration = () => {
 
           <Section>
             <h2>Rapports administratifs</h2>
-            <p>Générez des rapports détaillés sur les activités administratives.</p>
+            <p>
+              Générez des rapports détaillés sur les activités administratives.
+            </p>
             <Button>Voir les rapports</Button>
           </Section>
         </MainContent>

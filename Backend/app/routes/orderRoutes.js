@@ -1,6 +1,6 @@
-const express = require("express");
-const oracledb = require("oracledb");
-require("dotenv").config();
+const express = require('express');
+const oracledb = require('oracledb');
+require('dotenv').config();
 
 const router = express.Router();
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
@@ -15,19 +15,24 @@ async function connectDB() {
 }
 
 // Récupérer toutes les commandes
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const connection = await connectDB();
     const result = await connection.execute(`SELECT * FROM ORDERS`);
     await connection.close();
     res.json({ orders: result.rows });
   } catch (err) {
-    res.status(500).json({ error: "Erreur lors de la récupération des commandes", details: err.message });
+    res
+      .status(500)
+      .json({
+        error: 'Erreur lors de la récupération des commandes',
+        details: err.message,
+      });
   }
 });
 
 // Ajouter une commande
-router.post("/add", async (req, res) => {
+router.post('/add', async (req, res) => {
   const { customerId, productId, quantity, orderDate, status } = req.body;
   try {
     const connection = await connectDB();
@@ -38,9 +43,14 @@ router.post("/add", async (req, res) => {
       { autoCommit: true }
     );
     await connection.close();
-    res.status(201).json({ message: "Commande ajoutée avec succès", result });
+    res.status(201).json({ message: 'Commande ajoutée avec succès', result });
   } catch (err) {
-    res.status(500).json({ error: "Erreur lors de l'ajout de la commande", details: err.message });
+    res
+      .status(500)
+      .json({
+        error: "Erreur lors de l'ajout de la commande",
+        details: err.message,
+      });
   }
 });
 

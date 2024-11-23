@@ -37,7 +37,12 @@ export default async function handler(req, res) {
         [deliveryDate, orderId, address],
         { autoCommit: true }
       );
-      res.status(201).json({ message: 'Livraison ajoutée', delivery: { deliveryDate, orderId, address } });
+      res
+        .status(201)
+        .json({
+          message: 'Livraison ajoutée',
+          delivery: { deliveryDate, orderId, address },
+        });
     } catch (error) {
       res.status(500).json({ message: 'Erreur serveur' });
     } finally {

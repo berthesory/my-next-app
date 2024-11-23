@@ -28,7 +28,9 @@ const Analytics = () => {
 
           <Section>
             <h2>Graphiques</h2>
-            <ChartPlaceholder>Graphique en cours d_intégration</ChartPlaceholder>
+            <ChartPlaceholder>
+              Graphique en cours d_intégration
+            </ChartPlaceholder>
           </Section>
 
           <Section>

@@ -1,4 +1,4 @@
-"use client"; // Directive pour exécuter ce fichier côté client
+'use client'; // Directive pour exécuter ce fichier côté client
 
 import styled from 'styled-components';
 import { useUser } from '../app/context/UserContext';
@@ -7,7 +7,9 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <WelcomeMessage>Bienvenue dans le Système de Gestion Centralisé</WelcomeMessage>
+      <WelcomeMessage>
+        Bienvenue dans le Système de Gestion Centralisé
+      </WelcomeMessage>
       <UserSection>
         <span>👤 {user ? user.name : 'Invité'}</span>
       </UserSection>

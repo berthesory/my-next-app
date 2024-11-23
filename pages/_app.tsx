@@ -10,7 +10,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <AppContainer>
         <Head>
           <title>Société Houma AG - Tableau de bord</title>
-          <meta name="description" content="Tableau de bord pour la gestion centralisée" />
+          <meta
+            name="description"
+            content="Tableau de bord pour la gestion centralisée"
+          />
         </Head>
 
         <Sidebar />

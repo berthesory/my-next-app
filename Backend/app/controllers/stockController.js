@@ -1,5 +1,5 @@
-const oracledb = require("oracledb");
-require("dotenv").config();
+const oracledb = require('oracledb');
+require('dotenv').config();
 
 // Middleware pour se connecter à la base
 async function connectDB() {
@@ -21,9 +21,14 @@ const updateStock = async (req, res) => {
       { autoCommit: true }
     );
     await connection.close();
-    res.json({ message: "Stock mis à jour avec succès", result });
+    res.json({ message: 'Stock mis à jour avec succès', result });
   } catch (err) {
-    res.status(500).json({ error: "Erreur lors de la mise à jour du stock", details: err.message });
+    res
+      .status(500)
+      .json({
+        error: 'Erreur lors de la mise à jour du stock',
+        details: err.message,
+      });
   }
 };
 

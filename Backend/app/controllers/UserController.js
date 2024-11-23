@@ -1,5 +1,5 @@
-const oracledb = require("oracledb");
-require("dotenv").config();
+const oracledb = require('oracledb');
+require('dotenv').config();
 
 // Configuration Oracle
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
@@ -21,7 +21,12 @@ const getAllUsers = async (req, res) => {
     await connection.close();
     res.json({ users: result.rows });
   } catch (err) {
-    res.status(500).json({ error: "Erreur lors de la récupération des utilisateurs", details: err.message });
+    res
+      .status(500)
+      .json({
+        error: 'Erreur lors de la récupération des utilisateurs',
+        details: err.message,
+      });
   }
 };
 
@@ -36,9 +41,14 @@ const addUser = async (req, res) => {
       { autoCommit: true }
     );
     await connection.close();
-    res.status(201).json({ message: "Utilisateur ajouté avec succès", result });
+    res.status(201).json({ message: 'Utilisateur ajouté avec succès', result });
   } catch (err) {
-    res.status(500).json({ error: "Erreur lors de l'ajout de l'utilisateur", details: err.message });
+    res
+      .status(500)
+      .json({
+        error: "Erreur lors de l'ajout de l'utilisateur",
+        details: err.message,
+      });
   }
 };
 

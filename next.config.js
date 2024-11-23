@@ -9,7 +9,7 @@ module.exports = {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
       '@components': path.resolve(__dirname, 'components'), // Alias pour les composants
-      '@styles': path.resolve(__dirname, 'styles'),         // Alias pour les styles
+      '@styles': path.resolve(__dirname, 'styles'), // Alias pour les styles
     };
     return config;
   },

@@ -1,6 +1,6 @@
-const express = require("express");
-const oracledb = require("oracledb");
-require("dotenv").config();
+const express = require('express');
+const oracledb = require('oracledb');
+require('dotenv').config();
 
 const router = express.Router();
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
@@ -15,7 +15,7 @@ async function connectDB() {
 }
 
 // Mettre à jour le stock d'un produit
-router.put("/update", async (req, res) => {
+router.put('/update', async (req, res) => {
   const { productId, newStock } = req.body;
   try {
     const connection = await connectDB();
@@ -25,9 +25,14 @@ router.put("/update", async (req, res) => {
       { autoCommit: true }
     );
     await connection.close();
-    res.json({ message: "Stock mis à jour avec succès", result });
+    res.json({ message: 'Stock mis à jour avec succès', result });
   } catch (err) {
-    res.status(500).json({ error: "Erreur lors de la mise à jour du stock", details: err.message });
+    res
+      .status(500)
+      .json({
+        error: 'Erreur lors de la mise à jour du stock',
+        details: err.message,
+      });
   }
 });
 

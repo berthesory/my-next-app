@@ -1,6 +1,6 @@
-const express = require("express");
-const oracledb = require("oracledb");
-require("dotenv").config();
+const express = require('express');
+const oracledb = require('oracledb');
+require('dotenv').config();
 
 const router = express.Router();
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
@@ -15,19 +15,24 @@ async function connectDB() {
 }
 
 // Récupérer tous les produits
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const connection = await connectDB();
     const result = await connection.execute(`SELECT * FROM PRODUCTS`);
     await connection.close();
     res.json({ products: result.rows });
   } catch (err) {
-    res.status(500).json({ error: "Erreur lors de la récupération des produits", details: err.message });
+    res
+      .status(500)
+      .json({
+        error: 'Erreur lors de la récupération des produits',
+        details: err.message,
+      });
   }
 });
 
 // Ajouter un produit
-router.post("/add", async (req, res) => {
+router.post('/add', async (req, res) => {
   const { name, price, description, stock } = req.body;
   try {
     const connection = await connectDB();
@@ -38,9 +43,14 @@ router.post("/add", async (req, res) => {
       { autoCommit: true }
     );
     await connection.close();
-    res.status(201).json({ message: "Produit ajouté avec succès", result });
+    res.status(201).json({ message: 'Produit ajouté avec succès', result });
   } catch (err) {
-    res.status(500).json({ error: "Erreur lors de l'ajout du produit", details: err.message });
+    res
+      .status(500)
+      .json({
+        error: "Erreur lors de l'ajout du produit",
+        details: err.message,
+      });
   }
 });
 

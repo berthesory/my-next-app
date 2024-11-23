@@ -1,6 +1,6 @@
-const express = require("express");
-const oracledb = require("oracledb");
-require("dotenv").config();
+const express = require('express');
+const oracledb = require('oracledb');
+require('dotenv').config();
 
 const router = express.Router();
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
@@ -15,14 +15,19 @@ async function connectDB() {
 }
 
 // Récupérer les données analytiques
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const connection = await connectDB();
     const result = await connection.execute(`SELECT * FROM ANALYTICS`);
     await connection.close();
     res.json({ analytics: result.rows });
   } catch (err) {
-    res.status(500).json({ error: "Erreur lors de la récupération des données analytiques", details: err.message });
+    res
+      .status(500)
+      .json({
+        error: 'Erreur lors de la récupération des données analytiques',
+        details: err.message,
+      });
   }
 });
 

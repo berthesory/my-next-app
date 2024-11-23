@@ -37,7 +37,12 @@ export default async function handler(req, res) {
         [userId, productId, quantity, totalPrice],
         { autoCommit: true }
       );
-      res.status(201).json({ message: 'Commande créée', order: { userId, productId, quantity, totalPrice } });
+      res
+        .status(201)
+        .json({
+          message: 'Commande créée',
+          order: { userId, productId, quantity, totalPrice },
+        });
     } catch (error) {
       res.status(500).json({ message: 'Erreur serveur' });
     } finally {
